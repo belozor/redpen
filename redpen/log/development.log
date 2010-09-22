@@ -1,0 +1,18 @@
+
+
+Processing ApplicationController#index (for 192.168.221.36 at 2010-09-22 22:41:38) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 192.168.221.36 at 2010-09-22 22:42:27) [GET]
+
+NameError (uninitialized constant HomeController):
+  
+
+Rendered rescues/_trace (465.4ms)
+Rendered rescues/_request_and_response (17.5ms)
+Rendering rescues/layout (internal_server_error)
