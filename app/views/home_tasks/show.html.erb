@@ -1,0 +1,13 @@
+<p>
+  <b>Content:</b>
+  <%=h @home_task.content %>
+</p>
+
+<p>
+  <b>Урок</b>
+  <%=h @home_task.lesson%>
+</p>
+
+
+<%= link_to 'Edit', edit_home_task_path(@home_task) %> |
+<%= link_to 'Back', home_tasks_path %>

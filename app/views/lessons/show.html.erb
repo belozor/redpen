@@ -1,0 +1,23 @@
+<p>
+  <b>
+    <%=h @lesson.learning_day.date %>
+  </b>
+</p>
+
+<p>
+  <%=h @lesson.course.name %>
+</p>
+
+<p>
+  <b>Начало:</b>
+  <%=h @lesson.start_time %>
+</p>
+
+<p>
+  <b>Конец:</b>
+  <%=h @lesson.end_time %>
+</p>
+
+
+<%= link_to 'Редактировать', edit_lesson_path(@lesson) %> |
+<%= link_to 'Удалить', lessons_path %>

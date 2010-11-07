@@ -1,0 +1,6 @@
+<h1><%=@home_task.lesson.course.name%>. Редактируем домашнее задание  на <%=@home_task.lesson.learning_day.date%></h1>
+
+<%= render :partial => "form" %>
+
+<%= link_to 'Показать', @home_task %> |
+<%= link_to 'Назад', home_tasks_path %>

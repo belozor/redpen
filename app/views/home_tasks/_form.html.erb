@@ -1,0 +1,12 @@
+
+<% form_for(@home_task, :url => lesson_home_task_path(@lesson)) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.text_area :content %>
+  </p>
+  <p>
+    <%= f.submit 'Записать' %>
+  </p>
+<% end %>
+

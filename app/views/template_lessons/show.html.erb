@@ -1,0 +1,23 @@
+<p>
+  <b>Start time:</b>
+  <%=h @template_lesson.start_time %>
+</p>
+
+<p>
+  <b>End time:</b>
+  <%=h @template_lesson.end_time %>
+</p>
+
+<p>
+  <b>Course:</b>
+  <%=h @template_lesson.course %>
+</p>
+
+<p>
+  <b>Day template:</b>
+  <%=h @template_lesson.day_template %>
+</p>
+
+
+<%= link_to 'Edit', edit_template_lesson_path(@template_lesson) %> |
+<%= link_to 'Back', template_lessons_path %>

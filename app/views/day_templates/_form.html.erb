@@ -1,0 +1,13 @@
+<% form_for([@school_class,@day_template]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label 'Наименование' %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.submit 'Отправить' %>
+  </p>
+<% end %>
+
+<%= link_to 'Все шаблоны', school_class_day_templates_path(@school_class) %>

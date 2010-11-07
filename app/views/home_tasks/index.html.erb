@@ -1,0 +1,22 @@
+<h1>Listing home_tasks</h1>
+
+<table>
+  <tr>
+    <th>Задание</th>
+    <th>Предмет</th>
+  </tr>
+
+<% @home_tasks.each do |home_task| %>
+  <tr>
+    <td><%=h home_task.content %></td>
+    <td><%=h home_task.lesson.course.name %></td>
+    <td><%= link_to 'Show', home_task %></td>
+    <td><%= link_to 'Edit', edit_home_task_path(home_task) %></td>
+    <td><%= link_to 'Destroy', home_task, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New home_task', new_home_task_path %>

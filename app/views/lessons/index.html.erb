@@ -1,0 +1,26 @@
+<h1>Listing lessons</h1>
+
+<table>
+  <tr>
+    <th>Learning day</th>
+    <th>Course</th>
+    <th>Start time</th>
+    <th>End time</th>
+  </tr>
+
+<% @lessons.each do |lesson| %>
+  <tr>
+    <td><%=h lesson.learning_day %></td>
+    <td><%=h lesson.course.name %></td>
+    <td><%=h lesson.start_time %></td>
+    <td><%=h lesson.end_time %></td>
+    <td><%= link_to 'Show', lesson %></td>
+    <td><%= link_to 'Edit', edit_lesson_path(lesson) %></td>
+    <td><%= link_to 'Destroy', lesson, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New lesson', new_lesson_path %>

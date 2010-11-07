@@ -1,3 +1,52 @@
-<% if current_user %>
-  Вы вошли как <%= current_user.login %>
+<% if @school_classes.length >1 %>
+<% else %>
+
+<h2>Расписание для класса &quot;<%=@school_classes[0].number.to_s %><%=@school_classes[0].letter %>&quot;</h2>
+
+    <%if @week_number%>
+      <%week_number = @week_number.to_i%>
+    <%else%>
+      <%week_number = Time.new.strftime("%W").to_i %>
+    <%end%>
+
+    <% unless week_number == Time.new.strftime("%W").to_i %>
+      <%= link_to 'Вернуться к текущей неделе', root_path %> <br/>
+    <%end%>
+      
+<%= link_to 'Предыдущая неделя', root_path+'?week='+(week_number-1).to_s %> |
+<%= link_to 'Следующая неделя', root_path+'?week='+(week_number+1).to_s %>
+
+  <% @school_classes[0].learning_days.each do |l_day| %>
+
+    <%if l_day.date.strftime("%W").to_i == week_number %>
+<p><strong><%= I18n.l l_day.date, :format =>:with_week_day%> </strong>
+      <table>
+      <% l_day.lessons.each_with_index do |lesson, index|%>
+        <% if index%2 == 0 %>
+          <% klass='class="odd"' %>
+        <%  else %>
+          <% klass='class="even"' %>
+        <% end %>
+        <tr <%= klass %>>
+          <td>
+            <%=lesson.course.name%>
+          </td>
+          <td>
+            <%=lesson.starttime%> &ndash; <%=lesson.endtime%>
+          </td>
+        </tr>
+        <tr <%= klass %>>
+          <td>
+            Домашнее задание:
+          </td>
+          <td style="width: 500px;">
+            <%= lesson.hometask %>
+          </td>
+        </tr>
+      <% end %>
+     </table>
+</p><br/>
+    <% end %>
+  <% end %>
+
 <% end %>

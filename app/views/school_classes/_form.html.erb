@@ -1,0 +1,21 @@
+<% form_for(@school_class) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label 'Номер' %><br />
+    <%= f.text_field :number %>
+  </p>
+  <p>
+    <%= f.label 'Буква' %><br />
+    <%= f.text_field :letter %>
+  </p>
+  <p>
+	<%= f.label 'Выбрать учителей:' %>
+	<%= f.select :user_ids, User.all.collect {|u| [ u.login, u.id ] },{}, {:multiple => true} %>
+</p>
+  <p>
+    <%= f.submit 'Отправить' %>
+  </p>
+<% end %>
+
+<%= link_to 'Все классы', school_classes_path %>

@@ -1,13 +1,26 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :template_lessons
+
+  map.resources :day_templates, :has_many => :template_lessons
+
+  map.resources :home_tasks
+
+  map.resources :lessons,:has_one =>:home_task
+  map.resources :learning_days, :has_many=> :lessons
+  map.resources :courses
+
   # The priority is based upon order of creation: first created -> highest priority.
 
 
   map.resources :user_sessions
   map.resources :users
+  map.resources :school_classes, :has_many =>[:learning_days, :day_templates]
   map.account "account/:id", :controller => "users", :action => "show"
 
   map.login "login", :controller => "user_sessions", :action => "new"
   map.logout "logout", :controller => "user_sessions", :action => "destroy"
+
+  map.select_school_classes "select_school_classes", :controller => "users", :action => "select_school_classes"
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
   # Keep in mind you can assign values other than :controller and :action

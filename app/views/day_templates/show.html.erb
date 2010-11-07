@@ -1,0 +1,30 @@
+<p>
+  <b>Шаблон:</b>
+  <%=h @day_template.name %>
+</p>
+<span>Уроки:</span><br/>
+<table>
+  <tr>
+    <th>Предмет</th>
+    <th>Начало урока</th>
+    <th>Конец урока</th>
+  </tr>
+
+<% @day_template.template_lessons.each do |template_lesson| %>
+  <tr>
+    <td><%=h template_lesson.course.name %></td>
+    <td><%=h template_lesson.start_time.strftime("%H:%M") %></td>
+    <td><%=h template_lesson.end_time.strftime("%H:%M") %></td>
+    <td><%= link_to 'Редактировать', edit_day_template_template_lesson_path(@day_template,template_lesson) %></td>
+    <td><%= link_to 'Удалить', day_template_template_lesson_path(@day_template, template_lesson), :confirm => 'Вы уверены?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Добавить урок в шаблон', new_day_template_template_lesson_path(@day_template) %><br/>
+
+
+<%= link_to 'Редактировать шаблон', edit_school_class_day_template_path(@school_class, @day_template) %> |
+<%= link_to 'Все шаблоны', school_class_day_templates_path(@school_class) %>

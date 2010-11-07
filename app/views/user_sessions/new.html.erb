@@ -1,15 +1,7 @@
-
-
-	<% form_for @user_session do |f| %>
-		
-              <%= f.label "Логин:"%>
-
-
-              <%= f.text_field :login, :style => "font-size:16px;width:400px"  %><br/>
-
-              <%= f.label "Пароль:" %>
-
-              <%= f.password_field :password, :style => "font-size:16px;width:400px" %><br/>
-
-              <%= f.submit "Войти", :style => 'width: 100px; font-size: medium;text-align: center;' %>
-      <% end %>
+<% form_for @user_session do |f| %>
+  <%= f.label "Логин:"%>
+  <%= f.text_field :login, :style => "font-size:16px;width:400px"  %><br/>
+  <%= f.label "Пароль:" %>
+  <%= f.password_field :password, :style => "font-size:16px;width:400px" %><br/>
+  <%= f.submit "Войти", :style => 'width: 100px; font-size: medium;text-align: center;' %>
+<% end %>

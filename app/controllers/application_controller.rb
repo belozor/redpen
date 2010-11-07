@@ -39,8 +39,17 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    def require_flightmaster
-      unless current_user != nil && (current_user.userrole == 'admin' ||current_user.userrole == 'flightmaster')
+    def require_teacher_or_admin
+      unless current_user != nil && (current_user.userrole == 'admin' ||current_user.userrole == 'teacher')
+        store_location
+        flash[:notice] = "У вас не хватает прав."
+        redirect_to new_user_session_url
+        return false
+      end
+    end
+
+    def require_teacher
+      unless current_user != nil && (current_user.userrole == 'teacher')
         store_location
         flash[:notice] = "У вас не хватает прав."
         redirect_to new_user_session_url

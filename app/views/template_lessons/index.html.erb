@@ -1,0 +1,26 @@
+<h1>Listing template_lessons</h1>
+
+<table>
+  <tr>
+    <th>Start time</th>
+    <th>End time</th>
+    <th>Course</th>
+    <th>Day template</th>
+  </tr>
+
+<% @template_lessons.each do |template_lesson| %>
+  <tr>
+    <td><%=h template_lesson.start_time %></td>
+    <td><%=h template_lesson.end_time %></td>
+    <td><%=h template_lesson.course %></td>
+    <td><%=h template_lesson.day_template %></td>
+    <td><%= link_to 'Show', template_lesson %></td>
+    <td><%= link_to 'Edit', edit_template_lesson_path(template_lesson) %></td>
+    <td><%= link_to 'Destroy', template_lesson, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New template_lesson', new_template_lesson_path %>

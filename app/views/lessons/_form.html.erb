@@ -1,0 +1,21 @@
+
+<% form_for([@learning_day,@lesson]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label 'Предмет' %><br />
+    <%= f.select :course_id, Course.all.collect {|c| [ c.name, c.id ] } %>
+  </p>
+  <p>
+    <%= f.label 'Начало урока' %><br />
+    <%= f.time_select :start_time %>
+  </p>
+  <p>
+    <%= f.label 'Конец урока' %><br />
+    <%= f.time_select :end_time %>
+  </p>
+  <p>
+    <%= f.submit 'Отправить' %>
+  </p>
+<% end %>
+
