@@ -1,4 +1,5 @@
 class HomeTasksController < ApplicationController
+  before_filter :require_teacher_or_admin
   # GET /home_tasks
   # GET /home_tasks.xml
   def index

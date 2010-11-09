@@ -1,6 +1,21 @@
 class SchoolClassesController < ApplicationController
+  before_filter :require_teacher_or_admin, :only=>[:index, :new, :show, :create, :edit, :update, :destroy]
   # GET /school_classes
   # GET /school_classes.xml
+  def show_schedule
+    
+    if params[:week].to_i >0
+      @week_number = params[:week]
+    end
+    @school_class = SchoolClass.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @school_class }
+    end
+    
+  end
+
   def index
     @school_classes = SchoolClass.all
 

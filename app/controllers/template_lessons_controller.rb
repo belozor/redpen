@@ -1,4 +1,5 @@
 class TemplateLessonsController < ApplicationController
+  before_filter :require_teacher_or_admin
   # GET /template_lessons
   # GET /template_lessons.xml
   def index

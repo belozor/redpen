@@ -1,4 +1,9 @@
 <% if @school_classes.length >1 %>
+<ul>
+  <% @school_classes.each do | school_class| %>
+    <li><%=link_to "&quot;"+school_class.number.to_s+' '+school_class.letter+"&quot;", show_schedule_path(school_class)%></li>
+  <% end %>
+</ul>
 <% else %>
 
 <h2>Расписание для класса &quot;<%=@school_classes[0].number.to_s %><%=@school_classes[0].letter %>&quot;</h2>

@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  before_filter :require_teacher_or_admin
   # GET /courses
   # GET /courses.xml
   def index

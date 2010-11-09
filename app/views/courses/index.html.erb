@@ -9,7 +9,7 @@
   <tr>
     <td><%=h course.name %></td>
     <td><%= link_to 'Показать', course %></td>
-    <td><%= link_to 'Редактировать', edit_course_path(course) %></td>
+    <td><%= link_to 'Изменить имя', edit_course_path(course) %></td>
     <td><%= link_to 'Удалить', course, :confirm => 'Вы уверены?', :method => :delete %></td>
   </tr>
 <% end %>

@@ -15,6 +15,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :user_sessions
   map.resources :users
   map.resources :school_classes, :has_many =>[:learning_days, :day_templates]
+  map.show_schedule "show_schedule/:id", :controller => "school_classes", :action =>"show_schedule"
   map.account "account/:id", :controller => "users", :action => "show"
 
   map.login "login", :controller => "user_sessions", :action => "new"

@@ -1,4 +1,5 @@
 class DayTemplatesController < ApplicationController
+  before_filter :require_teacher_or_admin
   # GET /day_templates
   # GET /day_templates.xml
   def index

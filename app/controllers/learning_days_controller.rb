@@ -1,4 +1,5 @@
 class LearningDaysController < ApplicationController
+  before_filter :require_teacher_or_admin
   # GET /learning_days
   # GET /learning_days.xml
   def index

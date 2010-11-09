@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
       unless current_user != nil && current_user.userrole == 'admin'
         store_location
         flash[:notice] = "У вас не хватает прав."
-        redirect_to new_user_session_url
+        redirect_to root_url
         return false
       end
     end
@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
       unless current_user != nil && (current_user.userrole == 'admin' ||current_user.userrole == 'teacher')
         store_location
         flash[:notice] = "У вас не хватает прав."
-        redirect_to new_user_session_url
+        redirect_to root_url
         return false
       end
     end
@@ -52,7 +52,7 @@ class ApplicationController < ActionController::Base
       unless current_user != nil && (current_user.userrole == 'teacher')
         store_location
         flash[:notice] = "У вас не хватает прав."
-        redirect_to new_user_session_url
+        redirect_to root_url
         return false
       end
     end

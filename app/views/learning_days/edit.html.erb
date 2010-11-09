@@ -1,4 +1,17 @@
 <h1>Редактировать учебный день.</h1>
-<%= render :partial => "form" %>
+<% form_for([@school_class,@learning_day]) do |f| %>
+  <%= f.error_messages %>
 
-<%= link_to 'Показать', @learning_day %> |
+  <p>
+    <%= f.label 'Дата' %><br />
+    <%= f.date_select :date %>
+  </p>
+ 
+  <p>
+    <%= f.submit 'Отправить' %>
+  </p>
+<% end %>
+
+<%= link_to 'Все учебные дни', school_class_learning_days_path(@school_class) %>
+
+<%= link_to 'Показать', school_class_learning_day_path(@school_class, @learning_day) %>
