@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_session, :current_user
   protect_from_forgery :only => [:update, :destroy]
 #  skip_before_filter :verify_authenticity_token
+  
 
   private
     def current_user_session

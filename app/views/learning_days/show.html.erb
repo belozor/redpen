@@ -1,0 +1,41 @@
+<p>
+  <b>Дата:</b>
+  <%=h I18n.l @learning_day.date %>
+</p>
+
+<table>
+  <tr>
+    <th>Предмет</th>
+    <th>Начало урока</th>
+    <th>Конец урока</th>
+  </tr>
+
+<% @learning_day.lessons.each do |lesson| %>
+  <tr>
+    <td><%=link_to lesson.course.name, learning_day_lesson_path(@learning_day, lesson) %></td>
+    <td><%=h lesson.starttime %></td>
+    <td><%=h lesson.endtime %></td>
+    <td><%= link_to 'Редактировать', edit_learning_day_lesson_path(@learning_day,lesson) %></td>
+    <td><%= link_to 'Удалить', learning_day_lesson_path(@learning_day,lesson), :confirm => 'Вы уверены?', :method => :delete %></td>
+  </tr>
+  <tr>
+    <td>Домашнее задание:&nbsp;</td>
+    <td colspan="2" style="width:200px;">
+      <%= lesson.hometask  %>
+    </td>
+    <td>
+      <%unless lesson.hometask%>
+        <%= link_to 'Задать домашнее задание', new_lesson_home_task_path(lesson) %>
+      <% else %>
+        <%= link_to 'Редактировать домашнее задание', edit_lesson_home_task_path(lesson) %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Добавить урок', new_learning_day_lesson_path(@learning_day) %> |
+<%= link_to 'Редактировать', edit_school_class_learning_day_path(@school_class,@learning_day) %> |
+<%= link_to 'Все учебные дни', school_class_learning_days_path(@school_class) %>

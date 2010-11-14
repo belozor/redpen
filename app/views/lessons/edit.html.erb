@@ -1,0 +1,5 @@
+<h1>Редактировать урок</h1>
+
+<%= render :partial => "form" %>
+<%= link_to 'Показать', learning_day_lesson_path(@learning_day,@lesson) %> |
+<%= link_to 'Назад', school_class_learning_day_path(@learning_day.school_class, @learning_day) %>

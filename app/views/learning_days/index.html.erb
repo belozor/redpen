@@ -1,0 +1,30 @@
+<h1>Учебные дни</h1>
+
+<%if @week_number%>
+  <%week_number = @week_number.to_i%>
+<%else%>
+  <%week_number = Time.new.strftime("%W").to_i %>
+<%end%>
+<p>
+<% unless week_number == Time.new.strftime("%W").to_i %>
+  <%= link_to 'Вернуться к текущей неделе', root_path %> <br/>
+<%end%>
+<%= link_to 'Предыдущая неделя', school_class_learning_days_path(@school_class)+'?week='+(week_number-1).to_s %> |
+<%= link_to 'Следующая неделя', school_class_learning_days_path(@school_class)+'?week='+(week_number+1).to_s %></p>
+<table>
+  
+<% @learning_days.each do |learning_day| %>
+  <%if learning_day.date.strftime("%W").to_i == week_number %>
+    <tr>
+      <td><%=h I18n.l learning_day.date, :format =>:with_week_day %></td>
+      <td><%= link_to 'Показать', school_class_learning_day_path(@school_class, learning_day) %></td>
+      <td><%= link_to 'Изменить дату', edit_school_class_learning_day_path(@school_class, learning_day) %></td>
+      <td><%= link_to 'Удалить', school_class_learning_day_path(@school_class, learning_day), :confirm => 'Вы уверены?', :method => :delete %></td>
+    </tr>
+  <% end %>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Новый учебный день', new_school_class_learning_day_path(@school_class) %> | <%= link_to 'Шаблоны', school_class_day_templates_path(@school_class) %>

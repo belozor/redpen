@@ -1,0 +1,16 @@
+<p>
+  <b>
+  <%=h @school_class.number %>
+  <%=h @school_class.letter %></b>
+</p>
+<p><b>Учителя этого класса</b>
+  <ul>
+    <%@school_class.users.each do |teacher|%>
+    <li><%= teacher.surname %> &nbsp;<%= teacher.fname %> &nbsp;<%= teacher.sname %> </li>
+    <% end %>
+  </ul>
+</p>
+
+
+<%= link_to 'Редактировать', edit_school_class_path(@school_class) %> |
+<%= link_to 'Все классы', school_classes_path %>

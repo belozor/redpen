@@ -1,0 +1,16 @@
+<% form_for([@school_class,@learning_day]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label 'Дата' %><br />
+    <%= f.date_select :date %>
+  </p>
+  <p><%= f.label 'Использовать шаблон' %><br />
+    <%= f.select :day_template_id, @school_class.day_templates.collect {|template| [ template.name, template.id ] },{:prompt=>"Выберите шаблон"} %>
+  </p>
+  <p>
+    <%= f.submit 'Отправить' %>
+  </p>
+<% end %>
+
+<%= link_to 'Все учебные дни', school_class_learning_days_path(@school_class) %>
